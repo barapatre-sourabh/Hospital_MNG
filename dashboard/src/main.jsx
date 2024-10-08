@@ -7,7 +7,7 @@ export const Context = createContext({ isAuthenticated: false });
 const AppWrapper = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [admin, setAdmin] = useState({});
-
+//admin ki jagah user
   return (
     <Context.Provider
       value={{ isAuthenticated, setIsAuthenticated, admin, setAdmin }}
@@ -17,7 +17,8 @@ const AppWrapper = () => {
   );
 };
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
     <AppWrapper />
   </React.StrictMode>

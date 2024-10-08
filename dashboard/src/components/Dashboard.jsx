@@ -93,46 +93,69 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {appointments && appointments.length > 0
-                ? appointments.map((appointment) => (
-                    <tr key={appointment._id}>
-                      <td>{`${appointment.firstName} ${appointment.lastName}`}</td>
-                      <td>{appointment.appointment_date.substring(0, 16)}</td>
-                      <td>{`${appointment.doctor.firstName} ${appointment.doctor.lastName}`}</td>
-                      <td>{appointment.department}</td>
-                      <td>
-                        <select
-                          className={
-                            appointment.status === "Pending"
-                              ? "value-pending"
-                              : appointment.status === "Accepted"
-                              ? "value-accepted"
-                              : "value-rejected"
-                          }
-                          value={appointment.status}
-                          onChange={(e) =>
-                            handleUpdateStatus(appointment._id, e.target.value)
-                          }
-                        >
-                          <option value="Pending" className="value-pending">
-                            Pending
-                          </option>
-                          <option value="Accepted" className="value-accepted">
-                            Accepted
-                          </option>
-                          <option value="Rejected" className="value-rejected">
-                            Rejected
-                          </option>
-                        </select>
-                      </td>
-                      <td>{appointment.hasVisited === true ? <GoCheckCircleFill className="green"/> : <AiFillCloseCircle className="red"/>}</td>
-                    </tr>
-                  ))
-                : "No Appointments Found!"}
-            </tbody>
+  {
+    appointments && appointments.length > 0 ? (
+      appointments.map((appointment) => {
+        return (
+          <React.Fragment key={appointment._id}>
+            <tr>
+              <td>{`${appointment.firstName} ${appointment.lastName}`}</td>
+              <td>
+                {appointment.appointment_date
+                  ? appointment.appointment_date.substring(0, 16)
+                  : "No date"}
+              </td>
+              <td>
+                {appointment.doctor
+                  ? `${appointment.doctor.firstName} ${appointment.doctor.lastName}`
+                  : "No doctor"}
+              </td>
+              <td>{appointment.department}</td>
+              <td>
+                <select
+                  className={
+                    appointment.status === "Pending"
+                      ? "value-pending"
+                      : appointment.status === "Accepted"
+                      ? "value-accepted"
+                      : "value-rejected"
+                  }
+                  value={appointment.status}
+                  onChange={(e) =>
+                    handleUpdateStatus(appointment._id, e.target.value)
+                  }
+                >
+                  <option value="Pending" className="value-pending">
+                    Pending
+                  </option>
+                  <option value="Accepted" className="value-accepted">
+                    Accepted
+                  </option>
+                  <option value="Rejected" className="value-rejected">
+                    Rejected
+                  </option>
+                </select>
+              </td>
+              <td>
+                {appointment.hasVisited === true ? (
+                  <GoCheckCircleFill className="green" />
+                ) : (
+                  <AiFillCloseCircle className="red" />
+                )}
+              </td>
+            </tr>
+          </React.Fragment>
+        );
+      })
+    ) : (
+      <tr>
+        <td colSpan={6}>no appointments</td>
+      </tr>
+    )
+  }
+</tbody>
           </table>
 
-          {}
         </div>
       </section>
     </>

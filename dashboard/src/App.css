@@ -37,8 +37,9 @@ body {
   }
 }
 @media (max-width: 460px) {
-  .logo {
-    width: 100%;
+  .logo-img {
+    width: 150px;
+    height: 100px;
   }
 }
 .form-title{

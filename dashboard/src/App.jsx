@@ -16,7 +16,7 @@ import "./App.css";
 const App = () => {
   const { isAuthenticated, setIsAuthenticated, admin, setAdmin } =
     useContext(Context);
-
+//admin ki jagah user
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -47,7 +47,7 @@ const App = () => {
         <Route path="/messages" element={<Messages />} />
         <Route path="/doctors" element={<Doctors />} />
       </Routes>
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-center"/>
     </Router>
   );
 };

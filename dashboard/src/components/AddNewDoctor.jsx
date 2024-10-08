@@ -86,7 +86,7 @@ const AddNewDoctor = () => {
   return (
     <section className="page">
       <section className="container add-doctor-form">
-        <img src="/logo.png" alt="logo" className="logo"/>
+        <img src="/logo1.png" alt="logo" className="logo"/>
         <h1 className="form-title">REGISTER A NEW DOCTOR</h1>
         <form onSubmit={handleAddNewDoctor}>
           <div className="first-wrapper">
@@ -124,12 +124,12 @@ const AddNewDoctor = () => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
-              <input
+              {/* <input
                 type="number"
                 placeholder="NIC"
                 value={nic}
                 onChange={(e) => setNic(e.target.value)}
-              />
+              /> */}
               <input
                 type={"date"}
                 placeholder="Date of Birth"
@@ -158,7 +158,9 @@ const AddNewDoctor = () => {
               >
                 <option value="">Select Department</option>
                 {departmentsArray.map((depart, index) => {
-                  return (
+                 
+                 //depart ki jagah element
+                 return (
                     <option value={depart} key={index}>
                       {depart}
                     </option>
